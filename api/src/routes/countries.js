@@ -54,7 +54,17 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-  res.send('funciona')
+  const id = req.params.id
+  let country;
+  try {
+    country = await Country.findByPk(id)
+    if (country.hasOwnProperty(createdInDb)) res.send(country)
+    else {
+      country = await axios.get('https://restcountries.com/v3/alpha/' + id)
+    }
+  } catch (error) {
+    
+  }
 })
 
 
