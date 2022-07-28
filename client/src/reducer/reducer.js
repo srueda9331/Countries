@@ -13,7 +13,7 @@ export default function Reducer(state = initialState, action){
       countries: action.payload
     }
     default:
-      return [...state]
+      return state
     
   }
 }

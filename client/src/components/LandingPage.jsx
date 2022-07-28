@@ -6,7 +6,7 @@ export default function Landing(){
     <div>
       <h1>Countries</h1>
       <p>Let's start with countries, the website where you could find info about the countries of the world</p>
-      <Link to='./Home.jsx' >
+      <Link to='./Home' >
         <button className='button-landing'>Go now!</button>
       </Link>
     </div>
