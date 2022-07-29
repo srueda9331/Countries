@@ -37,7 +37,9 @@ router.get('/', (req, res) => {
     }).then(response => {
       if(response.length > 0){
         res.send(response)
-      } else {
+      } 
+      
+      else {
 
         axios.get('https://restcountries.com/v3/all')
        .then((response) => {
@@ -59,12 +61,9 @@ router.get('/', (req, res) => {
         
        })
 
-
       }
     })
-      
     
-     
   } catch (error) {
     console.log(error);
   }
@@ -77,10 +76,18 @@ router.get('/:id', async (req, res) => {
   const id = req.params.id.toUpperCase()
   let country;
   try {
-    country = await Country.findByPk(id)
+    country = await Country.findByPk(id, {
+      include: {
+        model : Activities,
+        attributes : ['id', 'name', 'difficulty', 'length', 'season'],
+        through: {
+          attributes: []
+        }
+      }
+    })
     if(country) res.send(country)
     else {
-      country = await axios.get('https://restcountries.com/v3/alpha/' + id)
+      res.status(404).json({msg: 'The Id does not exist'})
     }
   } catch (error) {
     console.log(error);
