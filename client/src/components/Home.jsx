@@ -5,6 +5,7 @@ import { getCountries, orderByABC } from "../actions/actions";
 import { Link } from "react-router-dom";
 import Country from "./Countries";
 import Paginate from "./Paginate";
+import SearchBar from "./SearchBar";
 
 
 export default function Home(){
@@ -61,6 +62,7 @@ export default function Home(){
         allCountries={allCountries.length}
         paginate={paginate}
       />
+      <SearchBar />
       {
         currentCountries && currentCountries.map(country => {
           return (
