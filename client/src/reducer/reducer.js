@@ -2,7 +2,7 @@ import { GET_COUNTRIES } from "../actions/actions"
 
 
 const initialState = {
-  countries: [],
+  countries: []
 }
 
 export default function Reducer(state = initialState, action){
