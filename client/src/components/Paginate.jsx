@@ -9,7 +9,6 @@ export default function Paginate({countriesPerPage, allCountries, paginate}){
 
   return (
     <nav>
-   
       {
         pageNumbers && pageNumbers.map(number => {
           return (
@@ -18,7 +17,6 @@ export default function Paginate({countriesPerPage, allCountries, paginate}){
           )
         })
       }
-    
     </nav>
   )
 }

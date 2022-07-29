@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries } from "../actions/actions";
+import { getCountries, orderByABC } from "../actions/actions";
 import { Link } from "react-router-dom";
 import Country from "./Countries";
 import Paginate from "./Paginate";
@@ -9,6 +9,7 @@ import Paginate from "./Paginate";
 
 export default function Home(){
   const dispatch = useDispatch();
+  const [ order, setOrder ] = useState('')
   const allCountries = useSelector(state => state.countries);
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ countriesPerPage ] = useState(10);
@@ -18,16 +19,23 @@ export default function Home(){
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber)
-  }
+  };
 
   useEffect(() => {
     dispatch(getCountries())
-  }, [dispatch])
+  }, [dispatch]);
 
   const getCountriesAgain = (e) => {
     e.preventDefault(e);
     dispatch(getCountries())
-  }
+  };
+
+  const handleSort = (e) => {
+    e.preventDefault();
+    dispatch(orderByABC(e.target.value));
+    setCurrentPage(1);
+    setOrder(e.target.value);
+  };
 
   return (
     <div>
@@ -39,7 +47,7 @@ export default function Home(){
         Get Countries Again
       </button>
       <div>
-        <select>
+        <select onClick={(e) => handleSort(e)}>
           <option value='asc'>In Alphabetic Order</option>
           <option value='des'>From Z to A</option>
         </select>

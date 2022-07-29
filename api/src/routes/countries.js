@@ -1,4 +1,4 @@
-const { Router, response } = require('express');
+const { Router } = require('express');
 const { Country, Activities } = require('../db') 
 const { Op } = require('sequelize')
 const axios = require('axios')
