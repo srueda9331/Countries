@@ -41,7 +41,7 @@ export default function Home(){
   return (
     <div>
       <h1>COUNTRIES</h1>
-      <Link to='./CreateActivity.jsx'>
+      <Link to='./activity'>
         <button>Create activity</button>
       </Link>
       <button className='button-get-all-again' onClick={getCountriesAgain} >
@@ -51,6 +51,8 @@ export default function Home(){
         <select onClick={(e) => handleSort(e)}>
           <option value='asc'>In Alphabetic Order</option>
           <option value='des'>From Z to A</option>
+          <option value='high'>From highest to lowest population</option>
+          <option value='low'>From lowest to highest population</option>
         </select>
         <select>
           <option value='continent'>Continent</option>
@@ -67,7 +69,7 @@ export default function Home(){
         currentCountries && currentCountries.map(country => {
           return (
             <div>
-            <Link to='/id'>
+            <Link to={`home/${country.id}`}>
               <Country 
                 name={country.name} 
                 image={country.image} 

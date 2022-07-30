@@ -1,9 +1,16 @@
-import { GET_COUNTRIES, GET_COUNTRY_NAME, ORDER_BY_ABC } from "../actions/actions"
+import { GET_ACTIVITIES,
+         GET_COUNTRIES, 
+         GET_COUNTRY_DETAIL, 
+         GET_COUNTRY_NAME, 
+         ORDER_BY_ABC, 
+         POST_ACTIVITIES } from "../actions/actions"
 
 
 const initialState = {
   countries: [],
-  countriesCopy: []
+  countriesCopy: [],
+  activities: [],
+  detail: []
 }
 
 export default function Reducer(state = initialState, action){
@@ -18,6 +25,15 @@ export default function Reducer(state = initialState, action){
       return {
         ...state,
         countries: action.payload
+      }
+      case GET_ACTIVITIES:
+        return {
+          ...state,
+        }
+    case POST_ACTIVITIES:
+      return {
+        ...state,
+        activities: action.payload
       }
     case ORDER_BY_ABC:
       if(action.payload === 'asc'){
@@ -34,10 +50,29 @@ export default function Reducer(state = initialState, action){
           return 0;
         })
       }
+      else if(action.payload === 'high'){
+        state.countries.sort((a, b) => {
+          if(a.population > b.population) return -1;
+          if(b.population > a.population) return 1;
+          return 0;
+        })
+      }
+      else if(action.payload === 'low'){
+        state.countries.sort((a, b) => {
+          if(a.population > b.population) return -1;
+          if(b.population > a.population) return 1;
+          return 0;
+        })
+      }
     return {
       ...state,
       countries: state.countries
     }
+    case GET_COUNTRY_DETAIL:
+      return {
+        ...state,
+        detail: action.payload
+      }
     default:
       return state
     
