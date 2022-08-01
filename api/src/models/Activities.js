@@ -6,20 +6,19 @@ module.exports = (sequelize) => {
   sequelize.define('activities', {
     id: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      unique: true    
+      primaryKey: true,   
     },
     name: {
       type: DataTypes.STRING
     },
     difficulty:{ 
-      type : DataTypes.STRING    
+      type : DataTypes.INTEGER    
     },
     length: {
       type: DataTypes.STRING    
     },
     season: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     createdAtDb:{
       type: DataTypes.BOOLEAN,
