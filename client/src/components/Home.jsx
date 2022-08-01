@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries, orderByABC } from "../actions/actions";
+import { filterByContinet, getCountries, orderByABC } from "../actions/actions";
 import { Link } from "react-router-dom";
 import Country from "./Countries";
 import Paginate from "./Paginate";
@@ -38,6 +38,9 @@ export default function Home(){
     setOrder(e.target.value);
   };
 
+  const handleFilterContinent = (e) =>{
+    dispatch(filterByContinet(e.target.value))
+  }
   return (
     <div>
       <h1>COUNTRIES</h1>
@@ -54,9 +57,15 @@ export default function Home(){
           <option value='high'>From highest to lowest population</option>
           <option value='low'>From lowest to highest population</option>
         </select>
-        <select>
-          <option value='continent'>Continent</option>
-          <option value='activity'>Activity</option>
+        <select onClick={handleFilterContinent}>
+          <option value='All'>All</option>
+          <option value='North America'>North America</option>
+          <option value='South America'>South America</option>
+          <option value='Europe'>Europe</option>
+          <option value='Asia'>Asia</option>
+          <option value='Africa'>Africa</option>
+          <option value='Oceania'>Oceania</option>
+          <option value='Antarctica'>Antarctica</option>
         </select>
       </div>
       <Paginate 
@@ -66,20 +75,23 @@ export default function Home(){
       />
       <SearchBar />
       {
-        currentCountries && currentCountries.map(country => {
+        currentCountries && currentCountries.map(country=> {
           return (
-            <div>
-            <Link to={`home/${country.id}`}>
+            <div key={country.id} >
+            <Link key={country.id} className='link-each-card' to={`home/${country.id}`} >
               <Country 
                 name={country.name} 
                 image={country.image} 
-                continent={country.continent} 
-                key={country.id}
+                continent={country.continent}
+                
+                activities={country.activities} 
+                key={country.id} 
               />
             </Link>
             </div>
           )
-        })
+        }) 
+ 
       }
     </div>
   )

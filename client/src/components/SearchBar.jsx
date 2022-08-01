@@ -11,13 +11,14 @@ export default function SearchBar(){
   const handleInputChange = (e) => {
     e.preventDefault();
     setName(e.target.value)
-
+   
+   
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getCountryByName(name))
-    
+   
   } 
 
   return (
@@ -25,9 +26,9 @@ export default function SearchBar(){
       <input 
         type='text'
         placeholder='Write the name of a Country'
-        onChange={handleInputChange}
+        onChange={(e) => handleInputChange(e)}
       />
-      <button type='submit' onClick={handleSubmit}>Search</button>
+      <button type='submit' onClick={(e) => handleSubmit(e)}>Search</button>
     </div>
   )
 }
