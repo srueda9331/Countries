@@ -6,7 +6,10 @@ export const GET_COUNTRY_NAME = 'GET_COUNTRY_NAME';
 export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 export const POST_ACTIVITIES = 'GET_ACTIVITIES';
 export const ORDER_BY_ABC = 'ORDER_BY_ABC';
-export const GET_COUNTRY_DETAIL = 'GET_COUNTRY_DETAIL'
+export const GET_COUNTRY_DETAIL = 'GET_COUNTRY_DETAIL';
+export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
+export const CLEAN_DETAIL = 'CLEAN_DETAIL';
+
 
 
 export function getCountries(){
@@ -71,6 +74,13 @@ export function orderByABC(payload){
   }
 }
 
+export function filterByContinet(payload){
+  return {
+    type: FILTER_BY_CONTINENT,
+    payload
+  }
+}
+
 export function getCountryDetail(id){
   return async function(dispatch){
     try {
@@ -82,5 +92,12 @@ export function getCountryDetail(id){
     } catch (error) {
       console.log(error);
     }
+  }
+}
+
+export function cleanDetail(payload){
+  return {
+    type: CLEAN_DETAIL,
+    payload: []
   }
 }

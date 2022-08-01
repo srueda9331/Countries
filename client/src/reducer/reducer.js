@@ -1,4 +1,5 @@
-import { GET_ACTIVITIES,
+import { CLEAN_DETAIL, FILTER_BY_CONTINENT, 
+         GET_ACTIVITIES,
          GET_COUNTRIES, 
          GET_COUNTRY_DETAIL, 
          GET_COUNTRY_NAME, 
@@ -59,8 +60,8 @@ export default function Reducer(state = initialState, action){
       }
       else if(action.payload === 'low'){
         state.countries.sort((a, b) => {
-          if(a.population > b.population) return -1;
-          if(b.population > a.population) return 1;
+          if(a.population < b.population) return -1;
+          if(b.population < a.population) return 1;
           return 0;
         })
       }
@@ -68,7 +69,19 @@ export default function Reducer(state = initialState, action){
       ...state,
       countries: state.countries
     }
+    case FILTER_BY_CONTINENT:
+      const allCountries = state.countriesCopy
+      const filteredContinent = action.payload === 'All'? allCountries : allCountries.filter(c => c.continent === action.payload)
+      return {
+        ...state,
+        countries: filteredContinent
+      }
     case GET_COUNTRY_DETAIL:
+      return {
+        ...state,
+        detail: action.payload
+      }
+    case CLEAN_DETAIL:
       return {
         ...state,
         detail: action.payload
