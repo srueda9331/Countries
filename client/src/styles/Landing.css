@@ -1,0 +1,49 @@
+.landing{
+
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://img.freepik.com/premium-vector/high-resolution-grey-map-world-split-into-individual-countries-high-detail-world-map_601298-21.jpg?w=740');
+  height: 667px;
+  width: 1316px;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 1px;
+}
+
+#title-landing{
+  margin-top: 70px;
+  font-size: 70px;
+  font-style: italic;
+  font-family: 'Times New Roman', Times, serif;
+  color: aqua;
+  -webkit-text-stroke: 2px black;
+
+}
+
+#p-landing{
+  margin-top: 150px;
+  font-size: 40px;
+  margin-left: 50px;
+  margin-right: 50px;
+  color: rgb(199, 255, 126);
+  -webkit-text-stroke: 2px black;
+}
+
+#button-landing{
+  margin-top: 80px;
+  background-color: blueviolet;
+  padding: 20px 30px 20px 30px;
+  border: 1px solid black;
+  font-weight: bold;
+  border-radius: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  transition: 0.5s;
+  
+}
+
+#button-landing:hover{
+
+  background-color: blue;
+  color: black;
+  opacity: 0.8;
+
+}

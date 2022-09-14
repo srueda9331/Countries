@@ -1,17 +1,26 @@
-import { CLEAN_DETAIL, FILTER_BY_CONTINENT, 
-         GET_ACTIVITIES,
+import { CLEAN_DETAIL, 
+         FILTER_BY_CONTINENT, 
+         GET_NAMES,
          GET_COUNTRIES, 
          GET_COUNTRY_DETAIL, 
          GET_COUNTRY_NAME, 
          ORDER_BY_ABC, 
-         POST_ACTIVITIES } from "../actions/actions"
+         POST_ACTIVITIES, 
+         GET_ACTIVITIES,
+         GET_ACTIVITIES_NAME,
+         ACTIVITY              } from "../actions/actions"
 
 
 const initialState = {
   countries: [],
   countriesCopy: [],
+  countriesCopyTwo: [],
+  countriesCopyThree: [],
+  getNames: [],
+  detail: [],
   activities: [],
-  detail: []
+  getActivitiesOne: [],
+  activitiesOne : []
 }
 
 export default function Reducer(state = initialState, action){
@@ -20,21 +29,35 @@ export default function Reducer(state = initialState, action){
     return {
       ...state,
       countries: action.payload,
-      countriesCopy: action.payload
+      countriesCopy: action.payload,
+      countriesCopyTwo: action.payload,
+      countriesCopyThree: action.payload
     }
     case GET_COUNTRY_NAME:
       return {
         ...state,
         countries: action.payload
       }
+    case GET_NAMES:
+      return {
+        ...state,
+        getNames: action.payload
+      }
       case GET_ACTIVITIES:
         return {
           ...state,
+          activities: action.payload,
+          activitiesOne: action.payload
         }
+        case GET_ACTIVITIES_NAME:
+        return {
+          ...state,
+          getActivitiesOne: action.payload
+      
+        }  
     case POST_ACTIVITIES:
       return {
         ...state,
-        activities: action.payload
       }
     case ORDER_BY_ABC:
       if(action.payload === 'asc'){
@@ -70,12 +93,40 @@ export default function Reducer(state = initialState, action){
       countries: state.countries
     }
     case FILTER_BY_CONTINENT:
-      const allCountries = state.countriesCopy
+      const allCountries = state.countriesCopyThree
       const filteredContinent = action.payload === 'All'? allCountries : allCountries.filter(c => c.continent === action.payload)
       return {
         ...state,
-        countries: filteredContinent
+        countries: action.payload !== 'All'? filteredContinent :  state.countriesCopyTwo
       }
+    case ACTIVITY:
+      const allCountry = state.countriesCopy
+      
+      
+      const act = allCountry.filter(c => c.activities['0'] )
+      let filteredActivity = [];
+      
+        
+        if(action.payload !== 'All'){
+        for(let i = 0; i < act.length; i++){
+          
+          filteredActivity.push(act[i])
+          
+
+        }
+        filteredActivity = filteredActivity.filter(e => e.activities[0].name === action.payload)
+        
+      }
+          
+
+      
+      
+      return {
+        ...state,
+        countries: filteredActivity.length > 0 ? filteredActivity : state.countriesCopy
+      }
+   
+
     case GET_COUNTRY_DETAIL:
       return {
         ...state,
@@ -88,6 +139,5 @@ export default function Reducer(state = initialState, action){
       }
     default:
       return state
-    
   }
 }

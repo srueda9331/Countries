@@ -1,0 +1,105 @@
+.container-create-city-component{
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://img.freepik.com/premium-vector/high-resolution-grey-map-world-split-into-individual-countries-high-detail-world-map_601298-21.jpg?w=740');
+  min-height: 669px;
+  width: 1318px;
+  background-position: center;
+  background-repeat: no-repeat;
+ 
+}
+
+
+.submit-form {
+  margin-top: 15px;
+  background-color: rgb(116, 116, 236);
+  padding: 2px 4px 2px 4px;
+  border: 1px solid black;
+  font-weight: bold;
+  margin-left: 33px;
+  border-radius: 15px;
+  font-size: 16px;
+  width: 350px;
+  cursor: pointer;
+  color: beige;
+}
+
+.submit-form:hover{
+  opacity: 0.8;
+}
+
+.form{
+  padding: 15px;
+  border: 2px solid rgb(67, 67, 131);
+  background-color: white;
+  margin-left: 347px;
+  margin-right: 200px;
+  width: 600px;
+  min-height: 400px;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 20px 0 20px 0;
+  border-radius: 6px;
+  opacity: 0.9;
+  /* font-weight: bold; */
+}
+
+.all-labels-titles{
+  color: red;
+}
+
+.fields{
+  width: 400px;
+  margin: 10px;
+  border-radius: 3px;
+  border: 1px solid blue;
+}
+
+.fields:hover{
+  border: 1px solid green;
+}
+
+.other{
+  margin-left: 3px;
+  font-weight: bold;
+}
+
+.error{
+  color: red;
+}
+
+#get-back-form{
+  margin-top: 45px;
+  background-color: rgb(116, 116, 236);
+  padding: 10px 20px 10px 20px;
+  border: 1px solid black;
+  font-weight: bold;
+  border-radius: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: beige;
+}
+
+#text-before-form{
+  font-size: 35px;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(219, 219, 36);
+  -webkit-text-stroke: 1px black;
+  margin-left: -25px;
+  margin-bottom: 10px;
+}
+
+#form-instruction{
+  font-weight: bold;
+  margin-left: 45px;
+}
+
+#cancel-country{
+  background-color: red;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+

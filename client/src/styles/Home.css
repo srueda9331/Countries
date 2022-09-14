@@ -1,0 +1,53 @@
+.main-container{
+  
+  background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('https://c1.staticflickr.com/1/654/21270792723_a3cfe9306e_o.jpg');
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  padding-top: 20px;
+  background-size: cover;
+}
+
+.link-each-card {
+  text-decoration: none;
+}
+.container-home-country{
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  
+}
+
+.button-get-all-again-create-search{
+  margin-right: 15px;
+  margin-left: 20px;
+  background-color: rgb(116, 116, 236);
+  border: 1px solid black;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.spans{
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(56, 56, 5);
+}
+.selects{
+  margin-right: 25px;
+}
+
+#container-selects{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#title-home{
+  font-size: 35px;
+  font-family: 'Times New Roman', Times, serif;
+  color: beige;
+  -webkit-text-stroke: 1px black;
+}

@@ -9,7 +9,7 @@ const router = Router();
 router.get('/', (req, res) => {
  
   try {
-    const name = req.query.name;
+    const name = req.query.name
 
     if(name){
       Country.findAll({
@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
       })
       .then(response => {
         let found = response.filter(p => p.name)
-        found.length? res.send(found) : res.status(404).json({msg : 'Country not found'})
+        found.length > 0? res.send(found) : res.status(404).send('Country not found')
       })  
     } 
     
@@ -38,8 +38,8 @@ router.get('/', (req, res) => {
       if(response.length > 0){
         res.send(response)
       } 
-      
-      else {
+
+      else{
 
         axios.get('https://restcountries.com/v3/all')
        .then((response) => {
@@ -52,7 +52,7 @@ router.get('/', (req, res) => {
              capital: country.capital? country.capital[0] : 'No capital',
              subregion: country.subregion,
              area: country.area,
-             population: country.population 
+             population: country.population
              } 
          })  
         

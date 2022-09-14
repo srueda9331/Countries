@@ -1,3 +1,4 @@
+import '../styles/Paginate.css'
 import React from "react";
 
 
@@ -8,12 +9,13 @@ export default function Paginate({countriesPerPage, allCountries, paginate}){
   }
 
   return (
-    <nav>
+    <nav className='paginate'>
       {
         pageNumbers && pageNumbers.map(number => {
           return (
-            <a href={() => paginate(number)} onClick={() => paginate(number)}>{number}</a>
-
+            
+            <a className='page-num' href={() => paginate(number)} onClick={() => paginate(number)}>{number}</a>
+            
           )
         })
       }
