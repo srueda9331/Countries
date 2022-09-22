@@ -1,11 +1,24 @@
 .landing{
 
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://img.freepik.com/premium-vector/high-resolution-grey-map-world-split-into-individual-countries-high-detail-world-map_601298-21.jpg?w=740');
-  height: 667px;
-  width: 1316px;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://img.freepik.com/premium-vector/high-resolution-grey-map-world-split-into-individual-countries-high-detail-world-map_601298-21.jpg?w=740');
+  height: 730px;
+  width: 1465px;
   background-position: center;
   background-repeat: no-repeat;
   padding: 1px;
+  margin-left: -2px;
+  
+}
+
+.landing:before{
+  content: '';
+  width: 1462px;
+  min-height: 730px;
+  position: absolute;
+  background: linear-gradient(blue, purple);
+  margin-left: -730px;
+  opacity: 0.3;
+  
 }
 
 #title-landing{
@@ -15,16 +28,45 @@
   font-family: 'Times New Roman', Times, serif;
   color: aqua;
   -webkit-text-stroke: 2px black;
+  z-index: 100;    /* TRAER AL FRENTE position: absolute y z-index:100 */
+  position: relative;
 
 }
 
 #p-landing{
-  margin-top: 150px;
+  margin-top: 130px;
   font-size: 40px;
   margin-left: 50px;
   margin-right: 50px;
-  color: rgb(199, 255, 126);
+  color: rgb(145, 255, 0);
   -webkit-text-stroke: 2px black;
+  z-index: 100;    /* TRAER AL FRENTE position: absolute y z-index:100 */
+  position: relative;
+}
+
+.gif-container{
+  margin-top: -50px;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.gif-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: blueviolet; */
+  font-size: 20px;
+  color: white;
+  z-index: 100;    /* TRAER AL FRENTE position: absolute y z-index:100 */
+  position: relative;
+  margin-top: -180px;
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 60px;
+  font-family: 'Courier New', Courier, monospace;
+
 }
 
 #button-landing{
@@ -37,13 +79,17 @@
   font-size: 28px;
   cursor: pointer;
   transition: 0.5s;
-  
+  z-index: 100;    /* TRAER AL FRENTE position: absolute y z-index:100 */
+  position: relative;
 }
 
 #button-landing:hover{
 
   background-color: blue;
   color: black;
+  padding: 20px 30px 20px 30px;
   opacity: 0.8;
+  z-index: 100;    /* TRAER AL FRENTE position: absolute y z-index:100 */
+  position: relative;  /* TRAER AL FRENTE */
 
 }
