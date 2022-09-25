@@ -1,9 +1,30 @@
 import '../styles/Countries.css'
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from 'react-redux';
 
-export default function Country({name, image, continent, activities }){
+
+
+export default function Country({name, image, continent, activities, population, populationOrder }){
+  
+  const allCountries = useSelector(state => state.countries)
+
+
+  const filterActivityCreated = allCountries? allCountries?.filter(c => c?.activities[0]) : null
+  const listActivities = []
+  for (let i = 0; i < filterActivityCreated?.length; i++) {
+    let g = filterActivityCreated[i]
+    for (let j = 0; j < g?.activities?.length; j++) {
+      if(!listActivities.includes(g?.activities[j]?.name)){
+        listActivities.push(g?.activities[j]?.name)
+      }
+               
+    }
+  }
+  
+  console.log(listActivities);
 
   return (
+
     <div className='country-container'>
       <h2 className='name-country'>
         {
@@ -11,21 +32,102 @@ export default function Country({name, image, continent, activities }){
         }
       </h2>
       <img className='img-country' src={image} alt={name} width='180px' height='135px'/>
-      <h3 className='name-continent'>{continent}</h3>
-      
-      {
-        activities.length === 1? <span className='activity-name'><b>Activity: &nbsp;&nbsp;</b></span> : null
-      }
-      {
-        activities.length > 1? <span className='activity-name'><b>Activities: &nbsp;&nbsp;</b></span> : null
-      }
-      {
-        activities.length === 1?  activities.map(el => <span className='activity-name'>{ el.name[0].toUpperCase() + el.name.slice(1).toLowerCase() + ' '}</span>) : null
-      }
-      {
-        activities.length > 1?  activities.map(el => <span className='activity-name'>{  '• ' + el.name[0].toUpperCase() + el.name.slice(1).toLowerCase()} &nbsp;&nbsp;&nbsp;</span>) : null
-      }
-  
+        {
+          populationOrder.length?
+          <h3 className='name-continent' style={{fontSize: '17px'}}>
+            {
+            population < 1000? population : 
+            population < 10000? population.toString()[0] + '.' +  population.toString().slice(1,5): 
+            population < 100000? population.toString().slice(0,2) + '.' +  population.toString().slice(2,5): 
+            population < 1000000? population.toString().slice(0,3) + '.'+ population.toString().slice(3, 6) : 
+            population < 10000000? population.toString()[0] + '.' +population.toString().slice(1, 4) + '.'+ population.toString().slice(4, 8) : 
+            population < 100000000? population.toString().slice(0,2) + '.' + population.toString().slice(2, 5) + '.'+ population.toString().slice(5, 8) :
+            population < 1000000000? population.toString().slice(0, 3) + '.' + population.toString().slice(3,6) + '.' + population.toString().slice(6, 9):
+            population < 2000000000?population.toString()[0] + '.' + population.toString().slice(1, 4) + '.' + population.toString().slice(4,7) + '.' + population.toString().slice(7, 10):
+            population
+            } citizens
+          </h3>
+          :
+          <h3 className='name-continent'>{continent}</h3>
+        }
+      <div>
+        <div>
+          <span>
+            {
+              activities?.length === 0? <span className='activity-name'><b>Activity: &nbsp;</b></span> : null
+            }
+          </span>
+          <span>
+            {
+              activities?.length === 0? <span className='activity-name'> - - - &nbsp;&nbsp;</span> : null
+            }
+          </span>   
+          <span>
+            {
+              activities?.length === 1? <span className='activity-name'><b>Activity: &nbsp;</b></span> : null
+            }
+          </span>
+          <span>
+            {
+              activities?.length > 1? <span className='activity-name'><b>Activities: &nbsp;</b></span> : null
+            }
+          </span>
+          <span>
+            {
+              activities?.length === 1?  activities.map(el => <span className='activity-name'>{el.name[0].toUpperCase() + el.name.slice(1).toLowerCase() + ''}</span>) : null 
+            }
+          </span>
+          {/* <span>
+            {
+              activities?.length > 1 && activities?.length <= 4?  
+              activities.map(el => <span className='activity-name'>{ el.name[0].toUpperCase() + el.name.slice(1).toLowerCase()}, &nbsp;</span>): null
+            }
+          </span> */}
+           <span>
+            {
+              activities?.length > 1 && activities?.length <= 3?  
+              <span className='activity-name'>{ activities[0]?.name[0].toUpperCase() + activities[0].name.slice(1).toLowerCase()}</span>: null
+            }
+          </span>
+          <span>
+            {
+              activities?.length > 1 && activities?.length <= 3?  
+              <span className='activity-name'>, {activities[1]?.name[0].toUpperCase() + activities[1]?.name.slice(1).toLowerCase()}</span>: null
+            }
+          </span>
+          <span>
+            {
+              activities?.length > 2 && activities?.length <= 3 ?  
+              <span className='activity-name'>, {activities[2]?.name[0].toUpperCase() + activities[2]?.name.slice(1).toLowerCase()}</span>: null
+            }
+          </span>
+          {/* <span>
+            {
+              activities?.length > 3 && listActivities.length > 0? <span className='activity-name'>{ listActivities[0][0]?.toUpperCase() + listActivities[0]?.slice(1).toLowerCase() }</span> : null
+            }
+          </span> */}
+          <span>
+            {
+              activities?.length > 3 && listActivities.length > 0? <span className='activity-name'>{ activities[0]?.name[0].toUpperCase() + activities[0].name.slice(1).toLowerCase()}</span> : null
+            }
+          </span>
+          <span>
+            {
+              activities?.length > 3 && listActivities.length > 0? <span className='activity-name'>, {activities[1]?.name[0].toUpperCase() + activities[1]?.name.slice(1).toLowerCase()}</span> : null
+            }
+          </span>
+          <span>
+            {
+              activities?.length > 3 && listActivities.length > 0? <span className='activity-name'>, {activities[2]?.name[0].toUpperCase() + activities[2]?.name.slice(1).toLowerCase()}</span> : null
+            }
+          </span>
+          <span>
+            {
+              activities?.length > 3 && listActivities.length > 0? <span className='activity-name'>, ...</span> : null
+            }
+          </span>
+        </div>
+      </div>  
     </div>
   )
 }

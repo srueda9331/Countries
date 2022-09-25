@@ -10,19 +10,29 @@
   min-height: 254px;
   background: rgb(226, 219, 219);
   transition: 0.5s;
+  border: 1px solid black;
   
 }
 
 .country-container:hover{
-  background-color: rgb(119, 212, 119);
+  background-color: rgb(99, 209, 99);
+  border: 1px solid red;
+
 }
 
 .name-country{
   font-size: 20px;
+  margin-top: 10px;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+.img-country{
+  margin-top: -8px;
+  border: 1px solid black;
+}
+
 .name-continent{
+  margin-top: 10px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin-bottom: 0px;
 }
@@ -32,8 +42,4 @@
   font-size: 15px;
   margin-top: 0px;
   padding: 0;
-}
-
-.img-country{
-  border: 1px solid black;
 }
