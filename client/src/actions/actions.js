@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import swal from 'sweetalert'
 
 export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_COUNTRY_NAME = 'GET_COUNTRY_NAME';
@@ -16,16 +16,16 @@ export const ACTIVITY = 'ACTIVITY';
 
 
 
-export function getCountries(page, order, filtro){
+export function getCountries(){
   return async function(dispatch){
     try {
-      let countries = await axios.get('http://localhost:3001/countries?page=' + page + '&order=' + order + '&filter=' + filtro)
+      let countries = await axios.get('http://localhost:3001/countries')
       return dispatch( {
         type: GET_COUNTRIES,
         payload: countries.data
       })
     } catch (error) {
-      console.log(error);
+      window.location.reload()
     }
   }
 }
@@ -47,7 +47,7 @@ export function getActivities(){
 export function getActivitiesNames(){
   return async function(dispatch){
     try {
-      let activitiesOne = await axios.get('http://localhost:3001/activities/h')
+      let activitiesOne = await axios.get('http://localhost:3001/activities/activity')
       return dispatch( {
         type: GET_ACTIVITIES_NAME,
         payload: activitiesOne.data
@@ -67,7 +67,12 @@ export function getCountryByName(name){
       })
       
     } catch (error) {
-      console.log(error);
+      swal({
+        title:'Sorry!',
+        text:`But the country you're looking for can't be found`,
+        icon: 'error',
+        timer: '4000' 
+      })
     }
   }
 }
@@ -75,7 +80,7 @@ export function getCountryByName(name){
 export function getCountryNames(){
   return async function(dispatch){
     try {
-      let getNames = await axios.get('http://localhost:3001/activities/other')
+      let getNames = await axios.get('http://localhost:3001/activities/names')
       return dispatch({
         type: GET_NAMES,
         payload: getNames.data
@@ -139,7 +144,7 @@ export function getCountryDetail(id){
   }
 }
 
-export function cleanDetail(payload){
+export function cleanDetail(){
   return {
     type: CLEAN_DETAIL,
     payload: []
