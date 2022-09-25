@@ -17,12 +17,22 @@ function* newId(){
 
 let getNewId = newId();
 
-router.get('/other', async (req, res) => {
+router.get('/names', async (req, res) => {
   try {
     let getAll = await axios.get('https://restcountries.com/v3/all')
-    let getCodes = getAll.data.map(c => c.name.common)
-    getCodes.sort((a,b) => {if(a < b) return -1; if(a > b) return 1; return 0 })
-    if(getCodes.length > 0)res.status(201).send(getCodes)
+    let id = 1;
+    let getCodes = getAll.data.map(function(c){
+      return {
+        id: id++,
+        name: c.name.common
+      }
+    })
+    getCodes.sort((a,b) => {
+      if(a.name < b.name) return -1;
+      else if(a.name > b.name) return 1; 
+      else return 0 
+    })
+    if(getCodes.length > 0) res.status(201).send(getCodes)
     else res.status(404).json({msg: 'I could not find the names'})
     
   } catch (error) {
@@ -31,11 +41,10 @@ router.get('/other', async (req, res) => {
 })
 
 
-router.get('/h', async (req, res) => {
+router.get('/activity', async (req, res) => {
   try {
    
     let getName = await Activities.findAll()
-    // let one = all.find(el => el === all)
     let names = getName.map(el => el.name)
     res.status(201).send(names)
   } catch (error) {
@@ -47,7 +56,6 @@ router.get('/', async (req, res) => {
   try {
    
     let getAll = await Activities.findAll({include : Country})
-    // let one = all.find(el => el === all)
     res.status(201).send(getAll)
   } catch (error) {
     console.log(error);
@@ -57,17 +65,19 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-  const { name, difficulty, length, season, countries } = req.body;
+  const { name, difficulty, duration, season, countries } = req.body;
   
   try {
-    if(!name || !difficulty || !length || !season || !countries ) res.status(404).json({msg : 'Some values are missing'})
+    if(!name || !difficulty || !duration || !season || !countries ) res.status(404).json({msg : 'Some values are missing'})
     
-    
+    const repeatedName = await Activities.findOne({where: {name : name}})
+    if(repeatedName) res.status(404).json({msg: 'That name already exists'})
+
     let create = await Activities.create({
       id: getNewId.next().value,
       name,
       difficulty,
-      length, 
+      duration, 
       season,
       countries: []
     })
@@ -101,10 +111,10 @@ router.delete('/:id', async (req, res) => {
 
 // { 
 //   "name" : "sky", 
-//   "difficulty" : "hard", 
-//   "length" : "4 days", 
-//   "season": "Winter "
-//    "countries" : ["Colombia", "Argentina"]
+//   "difficulty" : 5, 
+//   "duration" : "4 days", 
+//   "season": "Winter",
+//   "countries" : ["Colombia", "Argentina"]
 // }
 
 module.exports = router;
