@@ -1,12 +1,11 @@
 .paginate{
-  /* display: flex;
-  flex-direction: row;
-  margin: 0px; */
   color: red;
   font-weight: bold;
   margin-top: 20px;
   
 }
+
+
 
 .page-num{
   margin: 2px;
@@ -15,7 +14,33 @@
   border: 1px solid black;
   cursor: pointer;
   opacity: 0.6;
+  color: red;
+  font-weight: bold;
 }
+
+.page-num:focus{
+  margin: 2px;
+  /* padding-bottom: 8px;
+  padding-top: 6px; */
+  padding: 6.1px 7px 8.6px 7px;
+  background-color: white;
+  border: 3px solid green;
+  cursor: pointer;
+  opacity: 0.8;
+  color: green;
+  font-weight: bold;
+  font-size: 16px;
+
+}
+
+/* .page-num:focus{
+  margin: 2px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid green;
+  cursor: pointer;
+  opacity: 0.6;
+} */
 
 .paginate:default{
   color: aqua;
