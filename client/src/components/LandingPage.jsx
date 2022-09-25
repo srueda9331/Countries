@@ -13,9 +13,7 @@ export default function Landing(){
           <img src={world} style={{zIndex:100, position:'relative'}}/>
           <div className='gif-text'>Go now!</div>
         </div>
-      </Link>
-        {/* <button id='button-landing'>Go now!</button> */}
-      
+      </Link>    
     </div>
   )
 }
