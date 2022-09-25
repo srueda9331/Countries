@@ -13,9 +13,7 @@ export default function Paginate({countriesPerPage, allCountries, paginate}){
       {
         pageNumbers && pageNumbers.map(number => {
           return (
-            
-            <a className='page-num' href={() => paginate(number)} onClick={() => paginate(number)}>{number}</a>
-            
+            <button className='page-num' onClick={() => paginate(number)}>{number}</button>
           )
         })
       }
