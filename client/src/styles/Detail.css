@@ -1,6 +1,6 @@
 .detail-container{
   background-color: rgb(248, 248, 178);
-  min-height: 40vh;
+  min-height: 45vh;
   background-size: 1800px 1800px;
   background-attachment: fixed;
   background-position: center;
@@ -10,30 +10,45 @@
 
 }
 
-h1, h2, h3{
-  padding-top: 0;
+/* h1, h2, h3{
+  padding-top: 10px;
   font-style: italic;
   font-family: 'Times New Roman', Times, serif;
-}
+}  */
+
 .detail-props{
-  margin-top: 100px;
-  height: 650px;
+  margin-top: 50px;
+  min-height: 680px;
   display: grid;
   grid-template-columns: 50% 50%;
 }
 
-.each-plane-text{
+.first-block-plane-text{
   color: red;
   font-weight: bold;
 }
+.second-block-plane-text{
+  color: red;
+  font-weight: bold;
+  text-align: left;
+  margin: 10px 0px 35px 0px;
+  margin-left: 30vh;
+}
+
+.span-detail{
+  color: black;
+}
 
 #img-detail{
-  margin-top: 20px;
-  height: 210px;
+  margin-top: 60px;
+  height: 300px;
+  width: 460px;
+  margin-left: 1vh;
+
 }
 
 #detail-button-goback{
-  margin-top: 45px;
+  margin-top: 25px;
   background-color: rgb(116, 116, 236);
   padding: 10px 20px 10px 20px;
   border: 1px solid black;
@@ -42,6 +57,8 @@ h1, h2, h3{
   font-size: 28px;
   cursor: pointer;
   color: beige;
+  /* margin-left: -12vh; */
+  margin-bottom: 20px;
 }
 
 #error-msg-detail{
