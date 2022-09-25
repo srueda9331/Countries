@@ -3,42 +3,34 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountryByName } from "../actions/actions";
+import swal from 'sweetalert'
 
-export default function SearchBar(){
+
+export default function SearchBar({setCurrentPage, names}){
   const dispatch = useDispatch();
   const [ name, setName ] = useState('')
-  // const oneCountry = useSelector(state => state.countries)
-  // const find = oneCountry.filter(n => n.name)
-  // var other = find.filter(c => c.name === name)
-  // console.log(other[0]);
-
-
-
+  
   const handleInputChange = (e) => {
     e.preventDefault();
     setName(e.target.value)
-   
-   
-  }
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
-   
-      let d = await dispatch(getCountryByName(name))
-  
-      if(!name){
-        alert('Write a name')
-      }
-      if(name) {var found = name.toLocaleLowerCase()}
-      if(!/[a | e | i | o | u | r | t | z | b | y | n | s | m | d | l | h | d | c | k | g ][a | e | i |o | u | w | s| r | d| l | p | c | b | t | n][a | e | i | o | u | n | l | d | t | s | q | y | m | k]+$/.test(found)){
-        alert("Sorry, cannot find your country")
-      }
- 
+    if(!name){
+      swal({
+        text: 'Write a name, please !',
+        timer: '2500'
+      })
+    }
+    dispatch(getCountryByName(name))
+    setCurrentPage(1)
   } 
 
  return (
     <div>
       <input 
+        id='input-search'
         type='text'
         placeholder='Write the name of a Country'
         onChange={(e) => handleInputChange(e)}
