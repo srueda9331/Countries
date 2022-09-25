@@ -102,31 +102,24 @@ export default function Reducer(state = initialState, action){
     case ACTIVITY:
       const allCountry = state.countriesCopy
       
-      
-      const act = allCountry.filter(c => c.activities['0'] )
       let filteredActivity = [];
       
-        
-        if(action.payload !== 'All'){
-        for(let i = 0; i < act.length; i++){
-          
-          filteredActivity.push(act[i])
-          
+      const act = allCountry.filter(c => c.activities[0])
 
+      for (let i = 0; i < act.length; i++) {
+        let activityValue = act[i]
+        for (let j = 0; j < activityValue.activities.length; j++) {
+          console.log(activityValue.activities[j].name === action.payload);
+          if(activityValue.activities[j].name === action.payload){
+            filteredActivity.push(activityValue)
+          }          
         }
-        filteredActivity = filteredActivity.filter(e => e.activities[0].name === action.payload)
-        
       }
-          
-
-      
-      
       return {
         ...state,
-        countries: filteredActivity.length > 0 ? filteredActivity : state.countriesCopy
+        countries: filteredActivity.length > 0 ? filteredActivity : act[0]? act : state.countriesCopy
       }
    
-
     case GET_COUNTRY_DETAIL:
       return {
         ...state,
