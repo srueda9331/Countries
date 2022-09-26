@@ -1,6 +1,6 @@
 .main-container{
   
-  background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('https://c1.staticflickr.com/1/654/21270792723_a3cfe9306e_o.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/terraqueous-globe.jpg');
   background-repeat: no-repeat;
   min-height: 100vh;
   background-attachment: fixed;

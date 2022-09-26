@@ -1,6 +1,6 @@
 .landing{
 
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://img.freepik.com/premium-vector/high-resolution-grey-map-world-split-into-individual-countries-high-detail-world-map_601298-21.jpg?w=740');
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../images/2dcountries.webp');
   min-height: 742px;
   width: 1465px;
   background-position: center;
