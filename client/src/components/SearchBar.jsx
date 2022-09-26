@@ -14,6 +14,13 @@ export default function SearchBar({setCurrentPage, names}){
     e.preventDefault();
     setName(e.target.value)
   };
+  
+  function handleKeyPress(e){
+    if(e.key === 'Enter'){
+      dispatch(getCountryByName(name))
+      setCurrentPage(1)
+    } 
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -34,6 +41,7 @@ export default function SearchBar({setCurrentPage, names}){
         type='text'
         placeholder='Write the name of a Country'
         onChange={(e) => handleInputChange(e)}
+        onKeyDown={handleKeyPress}
       />
       <button id='button-search' type='submit' onClick={(e) => handleSubmit(e)}>Search</button>
     </div> 
