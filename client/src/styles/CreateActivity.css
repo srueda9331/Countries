@@ -43,7 +43,7 @@
   padding: 15px;
   border: 2px solid rgb(67, 67, 131);
   background-color: white;
-  margin-left: 420px;
+  margin-left: 400px;
   margin-right: 200px;
   width: 600px;
   min-height: 400px;
@@ -91,9 +91,11 @@
   border: 1px solid black;
   font-weight: bold;
   border-radius: 15px;
+  margin-right: 80px;
   font-size: 28px;
   cursor: pointer;
   color: beige;
+  
 }
 
 #text-before-form{
