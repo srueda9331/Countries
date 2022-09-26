@@ -5,9 +5,9 @@
   align-items: center;
   cursor: pointer;
   margin: 5px;
-  width: 220px;
+  width: 200px;
   margin-right: 20px;
-  min-height: 254px;
+  min-height: 242px;
   background: rgb(226, 219, 219);
   transition: 0.5s;
   border: 1px solid black;
@@ -39,7 +39,7 @@
 
 .activity-name{
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 15px;
+  font-size: 12.5px;
   margin-top: 0px;
   padding: 0;
 }

@@ -29,7 +29,7 @@ export default function Country({name, image, continent, activities, population,
           name.length > 15? name[0].toUpperCase() + name.slice(1,15) + ' ...' : name[0].toUpperCase() + name.slice(1,15)
         }
       </h2>
-      <img className='img-country' src={image} alt={name} width='180px' height='135px'/>
+      <img className='img-country' src={image} alt={name} width='160px' height='115px'/>
         {
           populationOrder.length?
           <h3 className='name-continent' style={{fontSize: '17px'}}>
