@@ -23,16 +23,16 @@ router.get('/', async (req, res) => {
       findName.length? res.status(201).send(findName) : res.status(404).json({msg: 'Could not find that country name'})
     }
     // Find all countries already created at database --> Encontrar todos los paises en base de datos
-    // let findEveryCountry = await Country.findAll({
-    //   include: {
-    //     model : Activities,
-    //     attributes : ['id', 'name', 'difficulty', 'duration', 'season'],
-    //     through: {
-    //       attributes: []
-    //     }
-    //   }
-    // })
-    let findEveryCountry = await Country.findAll()
+    let findEveryCountry = await Country.findAll({
+      include: {
+        model : Activities,
+        attributes : ['id', 'name', 'difficulty', 'duration', 'season'],
+        through: {
+          attributes: []
+        }
+      }
+    })
+
     // If they're not created yet, go to else and Bulkcreate first --> Si no existen en bd entonces crearlos
     if(findEveryCountry.length > 0) res.status(201).send(findEveryCountry) 
     
