@@ -34,9 +34,9 @@ export default function Home(){
     dispatch(getCountries())
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getActivitiesNames())
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getActivitiesNames())
+  // }, [dispatch]);
 
 
 
