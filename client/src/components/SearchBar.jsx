@@ -1,7 +1,7 @@
 import '../styles/SearchBar.css'
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getCountryByName } from "../actions/actions";
 import swal from 'sweetalert'
 

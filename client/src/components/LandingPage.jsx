@@ -10,7 +10,7 @@ export default function Landing(){
       <p id='p-landing'>Let's start with countries, the website where you could find info about the countries of the world</p>
       <Link to='./Home' >
         <div className='gif-container'>
-          <img src={world} style={{zIndex:100, position:'relative'}}/>
+          <img src={world} style={{zIndex:100, position:'relative'}} alt='world-turning-around'/>
           <div className='gif-text'>Go now!</div>
         </div>
       </Link>    
