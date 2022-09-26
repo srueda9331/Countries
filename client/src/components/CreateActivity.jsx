@@ -17,20 +17,19 @@ export default function CreateActivity(){
 
 
   const allCountries = useSelector(state => state.countries)
-  // console.log(allCountries);
-  // const filterActivityCreated = allCountries.filter(c => c?.activities[0]) || null
-  // const listActivities = []
-  // for (let i = 0; i < filterActivityCreated.length; i++) {
-  //   let allActivity = filterActivityCreated[i].activities;
-  //   let getNameAct = filterActivityCreated[i].name;
-  //   for (let j = 0; j < allActivity.length; j++) {
-  //     if(allActivity.length > 7){
-  //       if(!listActivities.includes(getNameAct))
-  //         listActivities.push(getNameAct)
-  //     }        
-  //   }
-  // }
-  // console.log(listActivities);
+  const filterActivityCreated = allCountries.filter(c => c?.activities[0]) || null
+  const listActivities = []
+  for (let i = 0; i < filterActivityCreated.length; i++) {
+    let allActivity = filterActivityCreated[i].activities;
+    let getNameAct = filterActivityCreated[i].name;
+    for (let j = 0; j < allActivity.length; j++) {
+      if(allActivity.length > 7){
+        if(!listActivities.includes(getNameAct))
+          listActivities.push(getNameAct)
+      }        
+    }
+  }
+  console.log(listActivities);
 
   useEffect(() => {
     if(Object.values(errors).length > 0){
@@ -79,25 +78,25 @@ export default function CreateActivity(){
     dispatch(getActivitiesNames());
   }, [dispatch])
 
-  // useEffect(() => {
-  //   if(input.countries[0]){
-  //     if(filterActivityCreated[0]){
-  //       for (let i = 0; i < input.countries.length; i++) {
-  //         let nameCountry = input.countries[i];
-  //           for (let j = 0; j < filterActivityCreated.length; j++) {
-  //             let activityLength = filterActivityCreated[j].activities;
-  //               if (filterActivityCreated[j].name === nameCountry) {
-  //                 for(var k = 0; k < activityLength.length; k++){
-  //                   if(activityLength.length > 7){
-  //                     setLimit('exceeded')
-  //                   }
-  //                 }
-  //               }
-  //           }
-  //       }
-  //     }
-  //   }
-  // })
+  useEffect(() => {
+    if(input.countries[0]){
+      if(filterActivityCreated[0]){
+        for (let i = 0; i < input.countries.length; i++) {
+          let nameCountry = input.countries[i];
+            for (let j = 0; j < filterActivityCreated.length; j++) {
+              let activityLength = filterActivityCreated[j].activities;
+                if (filterActivityCreated[j].name === nameCountry) {
+                  for(var k = 0; k < activityLength.length; k++){
+                    if(activityLength.length > 7){
+                      setLimit('exceeded')
+                    }
+                  }
+                }
+            }
+        }
+      }
+    }
+  })
 
   const handleChange = (e) => {
     setInput({
@@ -123,16 +122,16 @@ export default function CreateActivity(){
 
   const handleDelete = (el) => {
     
-    // if(filterActivityCreated[0]){
-    //   for (let i = 0; i < filterActivityCreated.length; i++) {
-    //     let getActivities = filterActivityCreated[i].activities;
-    //       if (filterActivityCreated[i].name === el) {
-    //         for(var j = 0; j < getActivities.length; j++){
-    //           setLimit('')
-    //         }
-    //       }
-    //   }
-    // }
+    if(filterActivityCreated[0]){
+      for (let i = 0; i < filterActivityCreated.length; i++) {
+        let getActivities = filterActivityCreated[i].activities;
+          if (filterActivityCreated[i].name === el) {
+            for(var j = 0; j < getActivities.length; j++){
+              setLimit('')
+            }
+          }
+      }
+    }
    
       setInput({
         ...input,
@@ -196,7 +195,7 @@ export default function CreateActivity(){
               activityOne.length > 100? <span style={{color: 'red'}}>the app will stop creating new activities</span> : null
             }
           </p>
-          {/* <p>
+          <p>
             {
               limit.length > 0 && listActivities.length === 1? 
                 <span style={{color: 'red'}}>{listActivities[0]} has surpassed the limit of 8 activities per country</span> 
@@ -214,7 +213,7 @@ export default function CreateActivity(){
                 : 
                 null
             }
-          </p> */}
+          </p>
           <label className='other'> Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
           <input className='fields' type='text' value={input.name} name='name' onChange={handleChange} placeholder='Write a name of a known sport or whatever you like' />
           {errors.name && (<p className='error'>{errors.name}</p>)}      
