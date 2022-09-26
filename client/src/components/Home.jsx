@@ -17,7 +17,7 @@ export default function Home(){
   const allCountries = useSelector(state => state.countries);
   const names = allCountries.map(c => c.name.toLowerCase())
   const activities = useSelector(state => state.activities);
-
+  console.log(activities + 'ppp');
 
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ countriesPerPage ] = useState(10);
@@ -34,9 +34,9 @@ export default function Home(){
     dispatch(getCountries())
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(getActivitiesNames())
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getActivitiesNames())
+  }, [dispatch]);
 
 
 
@@ -143,7 +143,7 @@ export default function Home(){
                   image={country.image} 
                   continent={!populationOrder? country.continent : null}
                   population={populationOrder.length? country.population :  null}
-                  activities={country.activities} 
+                  activities={country.activities}
                   key={country.id}
                   populationOrder={populationOrder} 
                 />
