@@ -20,7 +20,7 @@ const initialState = {
   detail: [],
   activities: [],
   getActivitiesOne: [],
-  activitiesOne : []
+  
 }
 
 export default function Reducer(state = initialState, action){
@@ -47,7 +47,7 @@ export default function Reducer(state = initialState, action){
         return {
           ...state,
           activities: action.payload,
-          activitiesOne: action.payload
+          
         }
         case GET_ACTIVITIES_NAME:
         return {
