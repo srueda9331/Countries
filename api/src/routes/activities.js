@@ -41,7 +41,7 @@ router.get('/names', async (req, res) => {
 })
 
 
-router.get('/activity', async (req, res) => {
+router.get('/activityname', async (req, res) => {
   try {
    
     let getName = await Activities.findAll()

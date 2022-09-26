@@ -5,8 +5,8 @@ export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_COUNTRY_NAME = 'GET_COUNTRY_NAME';
 export const GET_NAMES = 'GET_NAMES';
 export const GET_ACTIVITIES = 'GET_ACTIVITIES';
-export const GET_ACTIVITIES_NAME = 'GET_ACTIVITIES';
-export const POST_ACTIVITIES = 'GET_ACTIVITIES';
+export const GET_ACTIVITIES_NAME = 'GET_ACTIVITIES_NAME';
+export const POST_ACTIVITIES = 'POST_ACTIVITIES';
 export const ORDER_BY_ABC = 'ORDER_BY_ABC';
 export const GET_COUNTRY_DETAIL = 'GET_COUNTRY_DETAIL';
 export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
@@ -47,7 +47,7 @@ export function getActivities(){
 export function getActivitiesNames(){
   return async function(dispatch){
     try {
-      let activitiesOne = await axios.get(`/activities/activity`)
+      let activitiesOne = await axios.get(`/activities/activityname`)
       return dispatch( {
         type: GET_ACTIVITIES_NAME,
         payload: activitiesOne.data

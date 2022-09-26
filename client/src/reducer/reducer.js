@@ -43,55 +43,56 @@ export default function Reducer(state = initialState, action){
         ...state,
         getNames: action.payload
       }
-      case GET_ACTIVITIES:
-        return {
-          ...state,
-          activities: action.payload,
-          
-        }
-        case GET_ACTIVITIES_NAME:
-        return {
-          ...state,
-          getActivitiesOne: action.payload
-      
-        }  
-    case POST_ACTIVITIES:
+    case GET_ACTIVITIES:
       return {
         ...state,
+        activities: action.payload,
+        
       }
+    case GET_ACTIVITIES_NAME:
+      console.log(action.payload);
+      return {
+        ...state,
+        getActivitiesOne: action.payload
+    
+      }  
+    case POST_ACTIVITIES:
+        return {
+          ...state,
+        }
     case ORDER_BY_ABC:
-      if(action.payload === 'asc'){
-        state.countries.sort((a, b) => {
-          if(a.name > b.name) return 1;
-          if(b.name > a.name) return -1;
-          return 0;
-        })
+        if(action.payload === 'asc'){
+          state.countries.sort((a, b) => {
+            if(a.name > b.name) return 1;
+            if(b.name > a.name) return -1;
+            return 0;
+          })
+        }
+        else if(action.payload === 'des'){
+          state.countries.sort((a, b) => {
+            if(a.name > b.name) return -1;
+            if(b.name > a.name) return 1;
+            return 0;
+          })
+        }
+        else if(action.payload === 'high'){
+          state.countries.sort((a, b) => {
+            if(a.population > b.population) return -1;
+            if(b.population > a.population) return 1;
+            return 0;
+          })
+        }
+        else if(action.payload === 'low'){
+          state.countries.sort((a, b) => {
+            if(a.population < b.population) return -1;
+            if(b.population < a.population) return 1;
+            return 0;
+          })
+        }
+      return {
+        ...state,
+        countries: state.countries
       }
-      else if(action.payload === 'des'){
-        state.countries.sort((a, b) => {
-          if(a.name > b.name) return -1;
-          if(b.name > a.name) return 1;
-          return 0;
-        })
-      }
-      else if(action.payload === 'high'){
-        state.countries.sort((a, b) => {
-          if(a.population > b.population) return -1;
-          if(b.population > a.population) return 1;
-          return 0;
-        })
-      }
-      else if(action.payload === 'low'){
-        state.countries.sort((a, b) => {
-          if(a.population < b.population) return -1;
-          if(b.population < a.population) return 1;
-          return 0;
-        })
-      }
-    return {
-      ...state,
-      countries: state.countries
-    }
     case FILTER_BY_CONTINENT:
       const allCountries = state.countriesCopyThree
       const filteredContinent = action.payload === 'All'? allCountries : allCountries.filter(c => c.continent === action.payload)
@@ -119,7 +120,7 @@ export default function Reducer(state = initialState, action){
         ...state,
         countries: filteredActivity.length > 0 ? filteredActivity : act[0]? act : state.countriesCopy
       }
-   
+    
     case GET_COUNTRY_DETAIL:
       return {
         ...state,

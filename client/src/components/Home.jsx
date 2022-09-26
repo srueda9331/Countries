@@ -16,7 +16,7 @@ export default function Home(){
   const [msg, setMsg] = useState('')
   const allCountries = useSelector(state => state.countries);
   const names = allCountries.map(c => c.name.toLowerCase())
-  const activities = useSelector(state => state.activities);
+  const activities = useSelector(state => state.getActivitiesOne);
   console.log(activities + 'ppp');
 
   const [ currentPage, setCurrentPage ] = useState(1);
@@ -36,6 +36,7 @@ export default function Home(){
 
   useEffect(() => {
     dispatch(getActivitiesNames())
+    console.log(dispatch(getActivitiesNames()));
   }, [dispatch]);
 
 
