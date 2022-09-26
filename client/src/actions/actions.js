@@ -25,8 +25,8 @@ export function getCountries(){
         payload: countries.data
       })
     } catch (error) {
-      // window.location.reload()
-      console.log(error);
+      window.location.reload()
+      // console.log(error);
     }
   }
 }
