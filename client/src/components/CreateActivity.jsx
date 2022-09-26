@@ -18,7 +18,7 @@ export default function CreateActivity(){
 
   const allCountries = useSelector(state => state.countries)
   console.log(allCountries);
-  const filterActivityCreated = allCountries.filter(c => c?.activities[0])
+  const filterActivityCreated = allCountries.filter(c => c?.activities[0]) || null
   const listActivities = []
   for (let i = 0; i < filterActivityCreated.length; i++) {
     let allActivity = filterActivityCreated[i].activities;

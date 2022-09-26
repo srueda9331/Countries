@@ -9,7 +9,7 @@ export default function Country({name, image, continent, activities, population,
   const allCountries = useSelector(state => state.countries)
 
 
-  const filterActivityCreated = allCountries? allCountries?.filter(c => c?.activities[0]) : null
+  const filterActivityCreated =  allCountries?.filter(c => c?.activities[0]) || null
   const listActivities = []
   for (let i = 0; i < filterActivityCreated?.length; i++) {
     let g = filterActivityCreated[i]
